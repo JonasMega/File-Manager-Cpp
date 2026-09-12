@@ -13,7 +13,8 @@ int main(){
             if(std::filesystem::is_directory(entry)){
                 std::cout << "Folder: " << entry.path().filename() << '\n';
             }else{
-                std::cout << "File: " << entry.path().filename() << '\n';
+
+                std::cout << "File: " << entry.path().filename() << " Extension: " << entry.path().extension().string() << '\n';
             }
         }
     }else{
