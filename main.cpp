@@ -10,10 +10,13 @@ int main(){
 
     if(std::filesystem::exists(directoryPath) && std::filesystem::is_directory(directoryPath)){
         for(const auto& entry : std::filesystem::directory_iterator(directoryPath)){
-            std::cout << "File: " << entry.path() << '\n';
+            if(std::filesystem::is_directory(entry)){
+                std::cout << "Folder: " << entry.path().filename() << '\n';
+            }else{
+                std::cout << "File: " << entry.path().filename() << '\n';
+            }
         }
     }else{
         std::cerr << "Folder path not found";
     }
-
 }
